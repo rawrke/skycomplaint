@@ -1,0 +1,40 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "skycomplaint"
+version = "0.0.0"
+description = "Automatically submit complaints to Logan International Airport for noisey planes."
+authors = ["Evan Rourke <evan.rourke.er@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+FlightRadarAPI = "^1.2.7"
+haversine = "^2.8.0"
+
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.2.5"
+pre-commit = "^3.3.1"
+pyproject-flake8 = "^6.0.0"
+black = "^23.3.0"
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]
+exclude = '''
+(
+    \.egg
+  | \.git
+  | dist
+  | build
+)
+'''
+
+[tool.flake8]
+max-line-length = 88
+max-complexity = 15
+select = ['B', 'C', 'E', 'F', 'W', 'T4']
+ignore = []
+per-file-ignores = '*.__init__.py:F401'
